@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.kong.dao.AccountDao">
+    <select id="getAccountList" resultType="com.kong.pojo.Account">
+        select * from test.account
+    </select>
+
+    <select id="getAccountById" parameterType="String" resultType="com.kong.pojo.Account">
+        select * from test.account where id = #{id}
+    </select>
+
+    <insert id="addAccount" parameterType="com.kong.pojo.Account" >
+        insert into test.account(id, name, money, createTime, updateTime) VALUES (#{id},#{name},#{money},#{createTime},#{updateTime})
+    </insert>
+
+    <update id="updateAccount" parameterType="com.kong.pojo.Account">
+        update test.account set name =#{name},money =#{money},createTime=#{createTime},updateTime=#{updateTime} where id =#{id};
+    </update>
+
+    <delete id="delAcc" parameterType="String">
+        delete from test.account where id = #{id};
+    </delete>
+</mapper>
