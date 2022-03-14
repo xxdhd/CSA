@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kong.mapper.ConsumerMapper">
+    <select id="queryConsumerList" resultType="Consumer">
+        select * from test.consumer
+    </select>
+
+    <select id="queryById" resultType="Consumer">
+        select * from test.consumer where id=#{id}
+    </select>
+
+    <insert id="add" parameterType="Consumer">
+        insert into test.consumer (id, username, password, sex, phone_num, email, introduction) VALUES (#{id},#{username},#{password},#{sex},#{phone_num},#{email},#{introduction})
+    </insert>
+
+    <update id="update" parameterType="Consumer">
+        update test.consumer set username=#{username},password=#{password},sex=#{sex},phone_num=#{phone_num},email=#{email},introduction=#{introduction} where id=#{id}
+    </update>
+
+    <delete id="delete" parameterType="int">
+        delete from test.consumer where id=#{id}
+    </delete>
+</mapper>
